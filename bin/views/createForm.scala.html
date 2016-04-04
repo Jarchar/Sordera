@@ -1,0 +1,31 @@
+@(palabraForm: Form[Palabra])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Add a computer</h1>
+    
+    @form(action = routes.PalabraController.save(), 'enctype -> "multipart/form-data") {
+        
+        <fieldset>
+        
+            @inputText(palabraForm("nombre"), '_label -> "Computer name", '_help -> "")
+            @inputDate(palabraForm("descripcion"), '_label -> "Introduced date", '_help -> "")
+            @inputText(palabraForm("categoria"), '_label -> "Discontinued date", '_help -> "")
+            @inputFile(palabraForm("video") '_label -> "Video palabra", '_help -> ""
+
+                 
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this computer" class="btn primary"> or 
+            <a href="@routes.Application.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}

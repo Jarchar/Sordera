@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.PalabraController.index()
+# An example controller showing how to use dependency injection
+GET     /palabras                      controllers.PalabraController.list(p:Int ?= 0, s ?= "nombre", o ?= "asc", f ?= "")
+
+# Add computer
+GET     /palabras/nueva             controllers.PalabraController.create()
+POST    /computers                  controllers.PalabraController.save()
+
+# Edit existing computer
+GET     /palabras/:id              controllers.PalabraController.edit(id:Long)
+POST    /palabras/:id              controllers.PalabraController.update(id:Long)
+
+# Delete a computer
+POST    /palabras/:id/borrar       controllers.PalabraController.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /palabras/*file               controllers.Assets.at(path="/public", file)
