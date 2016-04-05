@@ -19,11 +19,11 @@ public class PalabraController extends Controller {
             routes.PalabraController.list(0, "nombre", "asc", "")
         );
    
-   public static Result index() {
+   public  Result index() {
        return GO_HOME;
    }
    
-   public static Result list(int page, String sortBy, String order, String filter) {
+   public Result list(int page, String sortBy, String order, String filter) {
        return ok(
            list.render(
                Palabra.page(page, 10, sortBy, order, filter),
@@ -31,7 +31,7 @@ public class PalabraController extends Controller {
            )
        );
    }
-   public static Result edit(Long id) {
+   public Result edit(Long id) {
        Form<Palabra> computerForm = formFactory.form(Palabra.class).fill(
            Palabra.find.byId(id)
        );
@@ -39,7 +39,7 @@ public class PalabraController extends Controller {
            editForm.render(id, computerForm)
        );
    }
-   public static Result update(Long id) {
+   public Result update(Long id) {
        Form<Palabra> palabraForm = formFactory.form(Palabra.class).bindFromRequest();
        if(palabraForm.hasErrors()) {
            return badRequest(editForm.render(id, palabraForm));
@@ -49,7 +49,7 @@ public class PalabraController extends Controller {
        return GO_HOME;
    }
    
-   public static Result create() {
+   public Result create() {
        Form<Palabra> palabraForm = formFactory.form(Palabra.class);
        return ok(
            createForm.render(palabraForm)
@@ -59,7 +59,7 @@ public class PalabraController extends Controller {
    /**
     * Handle the 'new computer form' submission 
     */
-   public static Result save() {
+   public Result save() {
        Form<Palabra> palabraForm = formFactory.form(Palabra.class).bindFromRequest();
        if(palabraForm.hasErrors()) {
            return badRequest(createForm.render(palabraForm));
@@ -72,7 +72,7 @@ public class PalabraController extends Controller {
    /**
     * Handle computer deletion
     */
-   public static Result delete(Long id) {
+   public Result delete(Long id) {
        Palabra.find.ref(id).delete();
        flash("exito", "Se ha borrado la palabra");
        return GO_HOME;
