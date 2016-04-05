@@ -9,7 +9,7 @@ GET     /palabras                      controllers.PalabraController.list(p:Int 
 
 # Add computer
 GET     /palabras/nueva             controllers.PalabraController.create()
-POST    /computers                  controllers.PalabraController.save()
+POST    /palabras                  controllers.PalabraController.save()
 
 # Edit existing computer
 GET     /palabras/:id              controllers.PalabraController.edit(id:Long)

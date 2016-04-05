@@ -19,9 +19,6 @@ public class PalabraController extends Controller {
             routes.PalabraController.list(0, "nombre", "asc", "")
         );
    
-   /**
-    * Handle default path requests, redirect to computers list
-    */
    public static Result index() {
        return GO_HOME;
    }
@@ -63,12 +60,12 @@ public class PalabraController extends Controller {
     * Handle the 'new computer form' submission 
     */
    public static Result save() {
-       Form<Palabra> computerForm = formFactory.form(Palabra.class).bindFromRequest();
-       if(computerForm.hasErrors()) {
-           return badRequest(createForm.render(computerForm));
+       Form<Palabra> palabraForm = formFactory.form(Palabra.class).bindFromRequest();
+       if(palabraForm.hasErrors()) {
+           return badRequest(createForm.render(palabraForm));
        }
-       computerForm.get().save();
-       flash("success", "Computer " + computerForm.get().name + " has been created");
+       palabraForm.get().save();
+       flash("exito", "La palabra " + palabraForm.get().name + " se ha agregado");
        return GO_HOME;
    }
    
@@ -77,7 +74,7 @@ public class PalabraController extends Controller {
     */
    public static Result delete(Long id) {
        Palabra.find.ref(id).delete();
-       flash("success", "Computer has been deleted");
+       flash("exito", "Se ha borrado la palabra");
        return GO_HOME;
    }
    
