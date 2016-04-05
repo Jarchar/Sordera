@@ -12,17 +12,17 @@
         
         <fieldset>
         
-            @inputText(palabraForm("nombre")), '_label -> "Computer name", '_help -> "")
-            @inputDate(palabraForm("descripcion")), '_label -> "Introduced date", '_help -> "")
-            @inputText(palabraForm("categoria")), '_label -> "Discontinued date", '_help -> "")
-            @inputFile(palabraForm("video")) '_label -> "Video palabra", '_help -> ""
+            @inputText(palabraForm("nombre")), '_label -> "Palabra", '_help -> "")
+            @inputDate(palabraForm("descripcion")), '_label -> "Descripcion", '_help -> "")
+            @inputText(palabraForm("categoria")), '_label -> "Categoria", '_help -> "")
+            @inputFile(palabraForm("video")) '_label -> "Video ", '_help -> ""
 
                  
 
         </fieldset>
         
         <div class="actions">
-            <input type="submit" value="Create this computer" class="btn primary"> or 
+            <input type="submit" value="Crea nueva palabra" class="btn primary"> or 
             <a href="@routes.PalabraController.list()" class="btn">Cancel</a> 
         </div>
         

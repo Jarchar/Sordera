@@ -8,15 +8,15 @@ GET     /                           controllers.PalabraController.index()
 GET     /palabras                      controllers.PalabraController.list(p:Int ?= 0, s ?= "nombre", o ?= "asc", f ?= "")
 
 # Add computer
-GET     /palabras/nueva             controllers.PalabraController.crear()
-POST    /computers                  controllers.PalabraController.salvar()
+GET     /palabras/nueva             controllers.PalabraController.create()
+POST    /palabras                  controllers.PalabraController.save()
 
 # Edit existing computer
-GET     /palabras/:id              controllers.PalabraController.editar(id:Long)
-POST    /palabras/:id              controllers.PalabraController.actualizar(id:Long)
+GET     /palabras/:id              controllers.PalabraController.edit(id:Long)
+POST    /palabras/:id              controllers.PalabraController.update(id:Long)
 
 # Delete a computer
-POST    /palabras/:id/borrar       controllers.PalabraController.borrar(id:Long)
+POST    /palabras/:id/borrar       controllers.PalabraController.delete(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /palabras/*file               controllers.Assets.at(path="/public", file)

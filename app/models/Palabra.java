@@ -20,7 +20,6 @@ public class Palabra extends Model {
  
     public String descripcion;
     public String categoria;
-    public String video;
 	public static final Model.Find<Long,Palabra> find = new Model.Find<Long,Palabra>(){};
 	
 	public Palabra(){
@@ -36,7 +35,6 @@ public class Palabra extends Model {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.categoria = categoria;
-		this.video = video;
 	}
 	public static PagedList<Palabra>page (int page, int pageSize, String sortBy, String order, String filter){
 		return

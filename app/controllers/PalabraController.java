@@ -1,6 +1,5 @@
 package controllers;
 
-import static play.data.Form.form;
 
 import javax.inject.Inject;
 
@@ -44,7 +43,7 @@ public class PalabraController extends Controller {
        if(palabraForm.hasErrors()) {
            return badRequest(editForm.render(id, palabraForm));
        }
-       palabraForm.get().update(id);
+       palabraForm.get().update();
        flash("success", "Palabra " + palabraForm.get().nombre + " has been updated");
        return GO_HOME;
    }
@@ -65,7 +64,7 @@ public class PalabraController extends Controller {
            return badRequest(createForm.render(palabraForm));
        }
        palabraForm.get().save();
-       flash("exito", "La palabra " + palabraForm.get().name + " se ha agregado");
+       flash("exito", "La palabra " + palabraForm.get().nombre + " se ha agregado");
        return GO_HOME;
    }
    

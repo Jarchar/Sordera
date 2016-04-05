@@ -1,4 +1,4 @@
-@(id: Long, computerForm: Form[Computer])
+@(id: Long, palabraForm: Form[Palabra])
 
 @import helper._
 
@@ -8,32 +8,29 @@
     
     <h1>Edit computer</h1>
     
-    @form(routes.Application.update(id)) {
+    @form(routes.PalabraController.update(id), 'enctype -> "multipart/form-data") {
         
         <fieldset>
         
-            @inputText(computerForm("name"), '_label -> "Computer name", '_help -> "")
-            @inputDate(computerForm("introduced"), '_label -> "Introduced date", '_help -> "")
-            @inputDate(computerForm("discontinued"), '_label -> "Discontinued date", '_help -> "")
+            @inputText(palabraForm("nombre")), '_label -> "Computer name", '_help -> "")
+            @inputText(palabraForm("descripcion")), '_label -> "Introduced date", '_help -> "")
+            @inputText(palabraForm("categoria")), '_label -> "Discontinued date", '_help -> "")
+            @inputFile(palabraForm("video") )'_label -> "Video palabra", '_help -> ""
             
-            @select(
-                computerForm("company.id"), 
-                options(Company.options), 
-                '_label -> "Company", '_default -> "-- Choose a company --",
-                '_showConstraints -> false
-            )
         
         </fieldset>
         
         <div class="actions">
             <input type="submit" value="Save this computer" class="btn primary"> or 
-            <a href="@routes.Application.list()" class="btn">Cancel</a> 
+            <a href="@routes.PalabraController.list()" class="btn">Cancel</a> 
         </div>
         
     }
     
-    @form(routes.Application.delete(id), 'class -> "topRight") {
+    @form(routes.PalabraController.delete(id), 'class -> "topRight") {
         <input type="submit" value="Delete this computer" class="btn danger">
     }
+
+
     
 }
