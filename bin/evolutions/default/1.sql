@@ -10,7 +10,6 @@ create table palabra (
   submitted_on                  timestamp,
   descripcion                   varchar(255),
   categoria                     varchar(255),
-  video                         varchar(255),
   constraint pk_palabra primary key (id)
 );
 create sequence palabra_seq;

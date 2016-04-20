@@ -1,7 +1,11 @@
 package controllers;
 
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.inject.Inject;
+
 
 import models.Palabra;
 import views.html.*;
@@ -12,7 +16,7 @@ import play.mvc.Result;
 
 public class PalabraController extends Controller {
     @Inject 
-    public static FormFactory formFactory;
+    public FormFactory formFactory;
 
 	public static Result GO_HOME = redirect(
             routes.PalabraController.list(0, "nombre", "asc", "")
@@ -59,14 +63,19 @@ public class PalabraController extends Controller {
     * Handle the 'new computer form' submission 
     */
    public Result save() {
-       Form<Palabra> palabraForm = formFactory.form(Palabra.class).bindFromRequest();
-       if(palabraForm.hasErrors()) {
-           return badRequest(createForm.render(palabraForm));
+       play.mvc.Http.MultipartFormData<File> body = request().body().asMultipartFormData();
+       play.mvc.Http.MultipartFormData.FilePart<File> picture = body.getFile("video");
+       if (picture != null) {
+           String fileName = picture.getFilename();
+           String contentType = picture.getContentType();
+           java.io.File file = picture.getFile();
+           return GO_HOME;
+       } else {
+           flash("error", "Missing file");
+           return badRequest();
        }
-       palabraForm.get().save();
-       flash("exito", "La palabra " + palabraForm.get().nombre + " se ha agregado");
-       return GO_HOME;
-   }
+
+     }
    
    /**
     * Handle computer deletion
